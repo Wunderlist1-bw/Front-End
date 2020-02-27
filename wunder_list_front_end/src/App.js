@@ -1,6 +1,9 @@
 import React from 'react';
 import './App.css';
 
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import ProtectedRoute from './components/ProtectedRoute';
+
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 
@@ -14,16 +17,24 @@ const store = createStore(reducer, applyMiddleware(thunk, logger));
 
 function App() {
   return (
-    <div className="App">
-      <Provider store={store}>
-        <header className="App-header">
-          <p>
-            WundererererList
-        </p>
-          <TodoList />
-        </header>
-      </Provider>
-    </div>
+    <Router>
+      <div className="App">
+        <Provider store={store}>
+          <header className="App-header">
+            <p>WundererererList</p>
+            {/* <TodoList /> */}
+          </header>
+          <Route exact path='/' component={TodoList} />
+          <Link to='/login'>LOG IN</Link>
+
+          <Switch>
+            <ProtectedRoute path='/list' />
+
+          </Switch>
+
+        </Provider>
+      </div>
+    </Router>
   );
 }
 
