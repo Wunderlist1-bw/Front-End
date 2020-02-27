@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-
+import { getList } from '../actions';
 
 const todoList = props => {
 
@@ -23,5 +23,5 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-    {}
+    { getList }
 )(todoList);
