@@ -10,21 +10,21 @@ const initialState = {
     list: [
         {
             title: 'todo one',
-            text_area: '',
+            text_area: 'Description here',
             created_date: Date.now(),
             due_date: 'soon',
             status: false
         },
         {
             title: 'todo two',
-            text_area: '',
+            text_area: 'Description here',
             created_date: Date.now(),
             due_date: 'sooner',
             status: false
         },
         {
             title: 'todo three',
-            text_area: '',
+            text_area: 'Description here',
             created_date: Date.now(),
             due_date: 'yesteryear',
             status: false
