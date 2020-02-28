@@ -28,12 +28,14 @@ function App() {
             {/* <TodoList /> */}
           </header>
           <Route exact path='/' component={TodoList} />
+          {/* <Route path='/login' component={Login} /> */}
           <br />
           <Link to='/login'>LOG IN</Link>
-          <TodoForm />
-          <Login />
+          {/* <TodoForm /> */}
+          {/* <Login /> */}
           <Switch>
-            <ProtectedRoute path='/list' />
+            <ProtectedRoute path='/list' component={TodoList} />
+            <Route path='/login' component={Login} />
 
           </Switch>
 

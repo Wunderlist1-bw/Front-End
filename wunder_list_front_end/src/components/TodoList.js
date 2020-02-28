@@ -5,6 +5,8 @@ import { getList } from '../actions';
 
 import CardItem from '../components/CardItem';
 
+import TodoForm from './TodoForm';
+
 const todoList = props => {
 
 
@@ -18,7 +20,8 @@ const todoList = props => {
                 ))
 
             }
-
+            <h3>More things to get done, add here:</h3>
+            <TodoForm />
         </>
     )
 }
