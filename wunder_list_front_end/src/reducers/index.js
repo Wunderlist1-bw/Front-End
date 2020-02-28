@@ -9,10 +9,24 @@ const initialState = {
     isLoading: false,
     list: [
         {
-            title: '',
+            title: 'todo one',
             text_area: '',
             created_date: Date.now(),
-            due_date: '',
+            due_date: 'soon',
+            status: false
+        },
+        {
+            title: 'todo two',
+            text_area: '',
+            created_date: Date.now(),
+            due_date: 'sooner',
+            status: false
+        },
+        {
+            title: 'todo three',
+            text_area: '',
+            created_date: Date.now(),
+            due_date: 'yesteryear',
             status: false
         }
     ]

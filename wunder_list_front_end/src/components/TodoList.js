@@ -3,12 +3,23 @@ import { connect } from 'react-redux';
 
 import { getList } from '../actions';
 
+import CardItem from '../components/CardItem';
+
 const todoList = props => {
 
 
     return (
         <>
-            <h1> A TODO LIST WILL GO HERE AT SOME POINT</h1>
+            <h1> TODO LIST TEST DATA:</h1>
+            {/* {console.log(props.list)} */}
+            {
+                props.list.map(todo => (
+                    <>
+                        <div><CardItem props={props} /></div>
+                    </>
+                ))
+
+            }
 
         </>
     )

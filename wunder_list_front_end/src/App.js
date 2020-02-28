@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -27,6 +28,7 @@ function App() {
             {/* <TodoList /> */}
           </header>
           <Route exact path='/' component={TodoList} />
+          <br />
           <Link to='/login'>LOG IN</Link>
           <TodoForm />
           <Switch>
