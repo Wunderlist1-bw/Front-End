@@ -7,6 +7,7 @@ function TodoForm(props) {
   const initFormData = {
     id: "",
     task: "",
+    description: "",
     completed: false
   }
 
@@ -29,7 +30,7 @@ function TodoForm(props) {
     setFormData(initFormData);
   };
 
-  const { task } = formData;
+  const { task, description } = formData;
 
   return (
     <form
@@ -42,11 +43,27 @@ function TodoForm(props) {
     >
       <div className="todo-form-content">
         <div>
-          <input name="task" onChange={handleChange} value={task} />
+          <input
+            name="task"
+            placeholder="Enter todo name"
+            onChange={handleChange}
+            value={task} />
         </div>
-        <DatePicker selected={date} onChange={dateChange} />
         <div>
-          <button type="submit">Add</button>
+          <input
+            name="description"
+            placeholder="Describe todo"
+            onChange={handleChange}
+            value={description} />
+        </div>
+        <br />
+        <div>
+          When is this 'todo' due?:
+          <br />
+          <DatePicker selected={date} onChange={dateChange} />
+        </div>
+        <div>
+          <button type="submit">Add todo</button>
         </div>
         <div>
           <button onClick={props.clearTodos}>clear all</button>
