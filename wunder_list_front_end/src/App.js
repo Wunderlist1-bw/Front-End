@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -13,6 +14,8 @@ import thunk from 'redux-thunk';
 import { todoReducer as reducer } from './reducers';
 import TodoList from './components/TodoList';
 
+import TodoForm from './components/TodoForm';
+
 const store = createStore(reducer, applyMiddleware(thunk, logger));
 
 function App() {
@@ -25,8 +28,9 @@ function App() {
             {/* <TodoList /> */}
           </header>
           <Route exact path='/' component={TodoList} />
+          <br />
           <Link to='/login'>LOG IN</Link>
-
+          <TodoForm />
           <Switch>
             <ProtectedRoute path='/list' />
 
