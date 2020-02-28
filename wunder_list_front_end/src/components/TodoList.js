@@ -15,7 +15,7 @@ const todoList = props => {
             {
                 props.list.map(todo => (
                     <>
-                        <div><CardItem props={props} /></div>
+                        <div><CardItem props={todo} /></div>
                     </>
                 ))
 
