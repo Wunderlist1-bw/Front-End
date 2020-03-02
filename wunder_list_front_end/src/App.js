@@ -25,17 +25,16 @@ function App() {
         <Provider store={store}>
           <header className="App-header">
             <p>WundererererList</p>
-            {/* <TodoList /> */}
           </header>
-          <Route exact path='/' component={TodoList} />
+          {/* <Route exact path='/' component={TodoList} /> */}
           {/* <Route path='/login' component={Login} /> */}
           <br />
           <Link to='/login'>LOG IN</Link>
           {/* <TodoForm /> */}
           {/* <Login /> */}
           <Switch>
-            <ProtectedRoute path='/list' component={TodoList} />
-            <Route path='/login' component={Login} />
+            <ProtectedRoute exact path='/list' component={TodoList} />
+            <Route exact path='/login' component={Login} />
 
           </Switch>
 
