@@ -11,12 +11,13 @@ const initialState = {
         {
             id: Date.now(),
             category: 'home',
-            title: 'todo one',
-            description: 'Description here',
-            completeDate: 'soon',
+            title: 'sample data',
+            description: 'sample description here',
+            completeDate: 'SOON',
             complete: 0
         }
-    ]
+    ],
+    error: ''
 }
 
 export const todoReducer = (state = initialState, action) => {
@@ -38,7 +39,7 @@ export const todoReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: false,
-
+                error: action.payload
             }
 
         case ADD_TODO:
