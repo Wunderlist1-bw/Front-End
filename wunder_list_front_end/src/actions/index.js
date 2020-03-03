@@ -38,11 +38,11 @@ export const addTodo = (formData) => dispatch => {
         .post(`/api/task`, { formData })
         .then(res => {
             console.log('todo added?', res.data);
-            // dispatch({ type: TODO_ADDED, payload: res.data })
+            dispatch({ type: TODO_ADDED, payload: res.data })
         })
         .catch(err => {
             console.log('todo did not add', err);
-            // dispatch({ type: ADD_ERROR, payload: "COULD NOT ADD YOUR TODO ITEM" })
+            dispatch({ type: ADD_ERROR, payload: "COULD NOT ADD YOUR TODO ITEM" })
         })
 }
 
