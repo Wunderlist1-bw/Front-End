@@ -2,42 +2,23 @@ import React, { useState } from 'react';
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from 'react-datepicker';
 
-import { addTodo } from '../actions';
-
 function TodoForm(props) {
 
   const initFormData = {
-    todo:
-    {
-      id: "",
-      task: "",
-      description: "",
-      completed: false
-    }
+    id: "",
+    task: "",
+    description: "",
+    completed: false
   }
 
-  const [formData, setFormData] = useState();
+  const [formData, setFormData] = useState(initFormData);
   const [date, setDate] = useState(Date.now());
 
   const handleChange = evt => {
     const { name, value } = evt.target;
 
-    setFormData({
-      todo: {
-        ...formData,
-        ...{ [name]: value }
-      }
-    });
+    setFormData({ ...formData, ...{ [name]: value } });
   };
-
-  // handleChange = e => {
-  //   this.setState({
-  //     credentials: {
-  //       ...this.state.credentials,
-  //       [e.target.name]: e.target.value
-  //     }
-  //   })
-  // }
 
   const dateChange = date => {
     setDate(date);
@@ -45,8 +26,7 @@ function TodoForm(props) {
 
   }
   const handleClick = formData => {
-    console.log('testing handle click for form submit');
-    addTodo(formData);
+    props.addTodo(formData);
     setFormData(initFormData);
   };
 
@@ -83,10 +63,10 @@ function TodoForm(props) {
           <DatePicker selected={date} onChange={dateChange} />
         </div>
         <div>
-          <button onClick={props.handleClick} type="submit">Add todo</button>
+          <button type="submit">Add todo</button>
         </div>
         <div>
-          {/* <button onClick={props.clearTodos}>clear all</button> */}
+          <button onClick={props.clearTodos}>clear all</button>
         </div>
       </div>
     </form>

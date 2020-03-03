@@ -25,11 +25,11 @@ export const getList = () => dispatch => {
         .get(`/api/task`)
         .then(res => {
             console.log(res);
-            // dispatch({ type: LOAD_LIST, payload: res.data })
+            dispatch({ type: LOAD_LIST, payload: res.data })
         })
         .catch(err => {
             console.log('could not get list', err);
-            // dispatch({ type: LIST_ERROR, payload: "NO LIST FOR YOU" })
+            dispatch({ type: LIST_ERROR, payload: "NO LIST FOR YOU" })
         })
 }
 

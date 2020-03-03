@@ -9,10 +9,16 @@ import TodoForm from './TodoForm';
 
 const todoList = props => {
 
+    const getTodos = e => {
+        e.preventDefault();
+        props.getList();
+    }
+    console.log(props);
 
     return (
         <>
             <h1> TODO LIST TEST DATA:</h1>
+            <button onClick={getTodos}>FETCH THOSE TODOS</button>
             {/* {console.log(props.list)} */}
             {
                 props.list.map(todo => (
@@ -21,14 +27,14 @@ const todoList = props => {
 
             }
             <h3>More things to get done, add here:</h3>
-            <TodoForm />
+            {/* <TodoForm /> */}
         </>
     )
 }
 
 const mapStateToProps = state => {
     return {
-        list: state.list,
+        list: state.task,
         error: state.error
     }
 }

@@ -16,9 +16,9 @@ export default function CardItem(props) {
         <CardBody>
           {/* <CardText className='editlink' onEdit={editPop}>Edit</CardText> */}
           {/* Insert route, link to an edit page/popover */}
-          <CardTitle>{props.props.title}</CardTitle>
-          <CardSubtitle>{props.props.status}</CardSubtitle>
-          <CardText>{props.props.created_date}</CardText>
+          <CardTitle>Task: {props.props.title}</CardTitle>
+          <CardSubtitle>Description: {props.props.description}</CardSubtitle>
+          <CardText>Due date: {props.props.completeDate}</CardText>
           {/* <Button className='donebtn' onDone={doneStatus}>Done</Button> */}
           {/* Done button will change status of the ticket. This element is NOT available for already 'Done' todo cards */}
           <CardText>{props.props.due_date}</CardText>

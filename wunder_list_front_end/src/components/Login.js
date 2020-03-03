@@ -19,7 +19,8 @@ const Login = props => {
     axiosWithAuth()
       .post("/api/auth/login", data)
       .then(response => {
-        window.localStorage.setItem("token", response.data.payload);
+        console.log(response);
+        window.localStorage.setItem("token", response.data.token);
         props.history.push("/list");
       })
       .catch(error => console.log(error));

@@ -7,27 +7,14 @@ import {
 
 const initialState = {
     isLoading: false,
-    list: [
+    task: [
         {
+            id: Date.now(),
+            category: 'home',
             title: 'todo one',
-            text_area: 'Description here',
-            created_date: Date.now(),
-            due_date: 'soon',
-            status: false
-        },
-        {
-            title: 'todo two',
-            text_area: 'Description here',
-            created_date: Date.now(),
-            due_date: 'sooner',
-            status: false
-        },
-        {
-            title: 'todo three',
-            text_area: 'Description here',
-            created_date: Date.now(),
-            due_date: 'yesteryear',
-            status: false
+            description: 'Description here',
+            completeDate: 'soon',
+            complete: 0
         }
     ]
 }
@@ -45,7 +32,7 @@ export const todoReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: false,
-
+                task: action.payload
             }
         case LIST_ERROR:
             return {
