@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { getList } from '../actions';
+import { getList, deleteTodo } from '../actions';
 
 import CardItem from '../components/CardItem';
 
@@ -13,7 +13,6 @@ const todoList = props => {
         e.preventDefault();
         props.getList();
     }
-    console.log(props);
 
     return (
         <>
@@ -22,12 +21,14 @@ const todoList = props => {
             {/* {console.log(props.list)} */}
             {
                 props.list.map(todo => (
-                    <CardItem key={todo.title} props={todo} />
+                    <CardItem key={todo.title} props={todo}>
+
+                    </CardItem>
                 ))
 
             }
             <h3>More things to get done, add here:</h3>
-            {/* <TodoForm /> */}
+            <TodoForm />
         </>
     )
 }

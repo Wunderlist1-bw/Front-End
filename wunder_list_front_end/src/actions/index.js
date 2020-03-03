@@ -24,11 +24,9 @@ export const getList = () => dispatch => {
     axiosWithAuth()
         .get(`/api/task`)
         .then(res => {
-            console.log(res);
             dispatch({ type: LOAD_LIST, payload: res.data })
         })
         .catch(err => {
-            console.log('could not get list', err);
             dispatch({ type: LIST_ERROR, payload: "NO LIST FOR YOU" })
         })
 }
@@ -64,13 +62,13 @@ export const editTodo = () => dispatch => {
         })
 }
 
-export const deleteTodo = () => dispatch => {
+export const deleteTodo = (todo) => dispatch => {
     dispatch({ type: DELETE_TODO });
 
     axiosWithAuth()
-        .post(``)
+        .delete(`/api/task/${todo.id}`)
         .then(res => {
-            console.log('todo go bye bye?', res.data);
+            console.log('todo go bye bye?', res.id);
             dispatch({ type: TODO_DELETED, payload: res.data })
         })
         .catch(res => {
@@ -78,3 +76,12 @@ export const deleteTodo = () => dispatch => {
             dispatch({ type: DELETE_ERROR, payload: "YOU ARE STUCK WITH THIS TODO" })
         })
 }
+
+
+// const deleteColor = color => {
+//     // make a delete request to delete this color
+//     axiosWithAuth()
+//       .delete(`/colors/${color.id}`)
+//       .then(res => console.log('delete worked', res))
+//       .catch(err => console.log('delete did not work', err))
+//   };
