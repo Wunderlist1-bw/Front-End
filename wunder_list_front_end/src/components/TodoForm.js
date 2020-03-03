@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from 'react-datepicker';
+import { addTodo } from '../actions';
 
 function TodoForm(props) {
 
   const initFormData = {
-    id: "",
-    task: "",
-    description: "",
-    completed: false
+    id: Date.now(),
+      title: '',
+      description: '',
+      completeDate: '',
+      complete: 0
   }
 
   const [formData, setFormData] = useState(initFormData);
@@ -16,8 +18,8 @@ function TodoForm(props) {
 
   const handleChange = evt => {
     const { name, value } = evt.target;
-
-    setFormData({ ...formData, ...{ [name]: value } });
+   console.log(formData)
+    setFormData({ ...formData,  [name]: value  });
   };
 
   const dateChange = date => {
@@ -25,12 +27,13 @@ function TodoForm(props) {
     console.log('the date I picked', date);
 
   }
-  const handleClick = formData => {
-    props.addTodo(formData);
+  const handleClick = () => {
+    console.log('testing handleClick', formData)
+    addTodo(formData);
     setFormData(initFormData);
   };
 
-  const { task, description } = formData;
+  const { title, description } = formData;
 
   return (
     <form
@@ -38,23 +41,23 @@ function TodoForm(props) {
       onSubmit={e => {
         e.preventDefault();
         e.stopPropagation();
-        handleClick(formData);
+        handleClick();
       }}
     >
       <div className="todo-form-content">
         <div>
           <input
-            name="task"
+            name="title"
             placeholder="Enter todo name"
             onChange={handleChange}
-            value={task} />
+            value={formData.title} />
         </div>
         <div>
           <input
             name="description"
             placeholder="Describe todo"
             onChange={handleChange}
-            value={description} />
+            value={formData.description} />
         </div>
         <br />
         <div>
