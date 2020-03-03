@@ -27,7 +27,7 @@ const todoList = props => {
 
             }
             <h3>More things to get done, add here:</h3>
-            {/* <TodoForm /> */}
+            <TodoForm />
         </>
     )
 }
