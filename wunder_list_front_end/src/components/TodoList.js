@@ -1,4 +1,6 @@
 import React from 'react';
+import { CardColumns, Button } from 'reactstrap';
+
 import { connect } from 'react-redux';
 
 import { getList, deleteTodo } from '../actions';
@@ -15,21 +17,15 @@ const todoList = props => {
     }
 
     return (
-        <>
-            <h1> TODO LIST TEST DATA:</h1>
-            <button onClick={getTodos}>FETCH THOSE TODOS</button>
-            {/* {console.log(props.list)} */}
-            {
-                props.list.map(todo => (
-                    <CardItem key={todo.title} props={todo}>
-
-                    </CardItem>
-                ))
-
-            }
-            <h3>More things to get done, add here:</h3>
+        <main>
+            <Button onClick={getTodos}>Fetch my todos</Button>
+            <CardColumns>
             <TodoForm />
-        </>
+            {props.list.map(todo => (
+                <CardItem key={todo.title} props={todo} />
+            ))}
+            </CardColumns>
+        </main>
     )
 }
 
