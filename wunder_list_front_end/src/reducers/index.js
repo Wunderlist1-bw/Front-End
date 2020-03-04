@@ -27,7 +27,7 @@ export const todoReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: true,
-
+                task: []
             }
         case LOAD_LIST:
             return {
@@ -46,19 +46,18 @@ export const todoReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: true,
-
+                task: []
             }
         case TODO_ADDED:
             return {
                 ...state,
-                isLoading: false,
-
+                isLoading: false
             }
         case ADD_ERROR:
             return {
                 ...state,
                 isLoading: false,
-
+                error: action.payload
             }
 
         case EDIT_TODO:
@@ -84,19 +83,18 @@ export const todoReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: true,
-
+                task: []
             }
         case TODO_DELETED:
             return {
                 ...state,
-                isLoading: false,
-
+                isLoading: false
             }
         case DELETE_ERROR:
             return {
                 ...state,
                 isLoading: false,
-
+                error: action.payload
             }
 
         default:

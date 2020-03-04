@@ -1,40 +1,52 @@
 import React, { useState } from 'react';
 import "react-datepicker/dist/react-datepicker.css";
+
+import { connect } from 'react-redux';
+
 import DatePicker from 'react-datepicker';
-import { addTodo } from '../actions';
+import { addTodo, getList } from '../actions';
 
 function TodoForm(props) {
 
   const initFormData = {
     id: Date.now(),
-      title: '',
-      description: '',
-      completeDate: '',
-      complete: 0
+    title: '',
+    description: '',
+    completeDate: '',
+    complete: 0,
+    users_id: 2
   }
 
   const [formData, setFormData] = useState(initFormData);
-  const [date, setDate] = useState(Date.now());
+  // const [date, setDate] = useState(Date.now());
 
   const handleChange = evt => {
     const { name, value } = evt.target;
-   console.log(formData)
-    setFormData({ ...formData,  [name]: value  });
+    console.log(formData)
+    setFormData({ ...formData, [name]: value });
   };
 
   const dateChange = date => {
-    setDate(date);
-    console.log('the date I picked', date);
-
+    // setDate(date);
+    setFormData({ ...formData, completeDate: date })
+    console.log('DATE:', date);
+    console.log('formdata have date?', formData)
   }
+
   const handleClick = () => {
-    console.log('testing handleClick', formData)
-    addTodo(formData);
+    const newFormData = {
+      ...formData,
+      completeDate: "hello world"
+    };
+    console.log('new form data', newFormData)
+    console.log('testing handleClick', formData.completeDate)
+    props.addTodo(newFormData)
+      .then(() => props.getList());
     setFormData(initFormData);
   };
 
   const { title, description } = formData;
-
+  console.log(typeof formData.completeDate)
   return (
     <form
       className="todo-form"
@@ -63,7 +75,7 @@ function TodoForm(props) {
         <div>
           When is this 'todo' due?:
           <br />
-          <DatePicker selected={date} onChange={dateChange} />
+          <DatePicker selected={formData.completeDate} onChange={dateChange} />
         </div>
         <div>
           <button type="submit">Add todo</button>
@@ -76,4 +88,13 @@ function TodoForm(props) {
   );
 }
 
-export default TodoForm;
+const mapStateToProps = state => {
+  return {
+
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  { addTodo, getList }
+)(TodoForm);

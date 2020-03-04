@@ -21,7 +21,7 @@ export const DELETE_ERROR = "DELETE_ERROR";
 export const getList = () => dispatch => {
     dispatch({ type: GET_LIST });
 
-    axiosWithAuth()
+    return axiosWithAuth()
         .get(`/api/task`)
         .then(res => {
             dispatch({ type: LOAD_LIST, payload: res.data })
@@ -34,11 +34,11 @@ export const getList = () => dispatch => {
 export const addTodo = (formData) => dispatch => {
     dispatch({ type: ADD_TODO });
 
-    axiosWithAuth()
-        .post(`/api/task`, { formData })
+    return axiosWithAuth()
+        .post(`/api/task`, formData)
         .then(res => {
             console.log('todo added?', res.data);
-            dispatch({ type: TODO_ADDED, payload: res.data })
+            dispatch({ type: TODO_ADDED })
         })
         .catch(err => {
             console.log('todo did not add', err);
@@ -49,7 +49,7 @@ export const addTodo = (formData) => dispatch => {
 export const editTodo = () => dispatch => {
     dispatch({ type: EDIT_TODO });
 
-    axiosWithAuth()
+    return axiosWithAuth()
         .put(``, {})
         .then(res => {
             console.log('todo edited?', res.data);
@@ -65,17 +65,18 @@ export const editTodo = () => dispatch => {
 export const deleteTodo = (todo) => dispatch => {
     dispatch({ type: DELETE_TODO });
 
-    axiosWithAuth()
+    return axiosWithAuth()
         .delete(`/api/task/${todo.id}`)
         .then(res => {
-            console.log('todo go bye bye?', res.id);
-            dispatch({ type: TODO_DELETED, payload: res.data })
+            console.log('todo go bye bye?', res);
+            dispatch({ type: TODO_DELETED })
         })
         .catch(res => {
             console.log('todo could not be deleted');
             dispatch({ type: DELETE_ERROR, payload: "YOU ARE STUCK WITH THIS TODO" })
         })
 }
+
 
 
 // const deleteColor = color => {
