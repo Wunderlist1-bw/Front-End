@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from 'react-datepicker';
+import { Card, Label, CardBody, CardTitle, Col, Button, Form, Input, FormGroup } from 'reactstrap';
+
 import { addTodo } from '../actions';
 
 function TodoForm(props) {
@@ -36,43 +38,43 @@ function TodoForm(props) {
   const { title, description } = formData;
 
   return (
-    <form
-      className="todo-form"
+    <Card>
+    <Form className="todo-form"
       onSubmit={e => {
         e.preventDefault();
         e.stopPropagation();
         handleClick();
-      }}
-    >
-      <div className="todo-form-content">
-        <div>
-          <input
+      }} >
+      <CardTitle>Add your next todo</CardTitle>
+      <CardBody>
+        <FormGroup>
+          <Input
+            type='text'
             name="title"
-            placeholder="Enter todo name"
+            placeholder="Task title"
             onChange={handleChange}
             value={formData.title} />
-        </div>
-        <div>
-          <input
+        </FormGroup>
+        <FormGroup>
+          <Input
+            type='textarea'
             name="description"
-            placeholder="Describe todo"
+            placeholder="Describe your task"
             onChange={handleChange}
             value={formData.description} />
-        </div>
-        <br />
-        <div>
-          When is this 'todo' due?:
-          <br />
-          <DatePicker selected={date} onChange={dateChange} />
-        </div>
-        <div>
-          <button type="submit">Add todo</button>
-        </div>
-        <div>
-          <button onClick={props.clearTodos}>clear all</button>
-        </div>
-      </div>
-    </form>
+        </FormGroup>
+        <FormGroup row>
+          <Label for="data" sm={4}>Due date</Label>
+          <Col sm={8}>
+          <DatePicker name='date' selected={date} onChange={dateChange} />
+          </Col>
+        </FormGroup>
+          <Button type="submit">Add</Button>
+          <Button onClick={props.clearTodos}>Clear all</Button>
+      </CardBody>
+    </Form>
+    </Card>
+
   );
 }
 
