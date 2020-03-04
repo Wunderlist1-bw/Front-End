@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Button, Form, FormGroup, Input, Col } from 'reactstrap';
+
 import axiosWithAuth from "../utils/axiosWithAuth";
 
 const Login = props => {
@@ -28,24 +30,20 @@ const Login = props => {
 
   return (
     <div>
-      <h1>Welcome to the WunderList!</h1>
-      <form className="login" onSubmit={handleSubmit}>
-        <div className="username">Username</div>
-        <input
-          type="text"
-          name="username"
-          value={data.username}
-          onChange={handleChange}
-        />
-        <div className="password">Password</div>
-        <input
-          type="password"
-          name="password"
-          value={data.password}
-          onChange={handleChange}
-        />
-        <button className="login-button">Log in</button>
-      </form>
+      <h1>Sign in to Dash</h1>
+      <Form className="login" onSubmit={handleSubmit}>
+      <FormGroup> 
+        <Col xs="12" md={{ size: 6, offset: 3 }}>
+        <Input type="text" name="username" id="username" placeholder="Username" value={data.username} onChange={handleChange} />
+        </Col>
+      </FormGroup>
+      <FormGroup>
+      <Col xs="12" md={{ size: 6, offset: 3 }}>
+        <Input type="password" name="password" id="Password" placeholder="Password" value={data.password} onChange={handleChange} />
+      </Col>
+      </FormGroup>
+      <Button className="login-button">Login</Button>
+      </Form>
     </div>
   );
 };
