@@ -3,7 +3,7 @@ import { Card, CardText, CardBody, CardTitle, CardSubtitle, Button } from 'react
 import { connect } from 'react-redux';
 // import { Route, Link } from "react-router-dom";
 
-import { deleteTodo } from '../actions';
+import { deleteTodo, getList } from '../actions';
 
 
 const CardItem = props => {
@@ -34,7 +34,7 @@ const CardItem = props => {
                 e.stopPropagation();
                 console.log('testing delete button response', props.props);
                 console.log(deleteTodo)
-                props.deleteTodo(props.props)
+                props.deleteTodo(props.props).then(() => props.getList());
               }
             }>DELETE</Button>
           {/* <Button className='donebtn' onDone={doneStatus}>Done</Button> */}
@@ -54,5 +54,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { deleteTodo }
+  { deleteTodo, getList }
 )(CardItem);
