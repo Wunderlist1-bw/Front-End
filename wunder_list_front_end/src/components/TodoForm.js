@@ -3,14 +3,10 @@ import "react-datepicker/dist/react-datepicker.css";
 
 import { connect } from 'react-redux';
 
-import DatePicker from 'react-datepicker';
-<<<<<<< HEAD
-import { addTodo, getList } from '../actions';
-=======
-import { Card, Label, CardBody, CardTitle, Col, Button, Form, Input, FormGroup } from 'reactstrap';
+import { Card, CardTitle, Form, CardBody, FormGroup, Input, Label, Col, Button } from 'reactstrap';
 
-import { addTodo } from '../actions';
->>>>>>> 8f0ac17eaff13fd66224d29edd1a7d5dbd452e4e
+import DatePicker from 'react-datepicker';
+import { addTodo, getList } from '../actions';
 
 function TodoForm(props) {
 
@@ -55,60 +51,42 @@ function TodoForm(props) {
   console.log(typeof formData.completeDate)
   return (
     <Card>
-    <Form className="todo-form"
-      onSubmit={e => {
-        e.preventDefault();
-        e.stopPropagation();
-        handleClick();
-      }} >
-      <CardTitle>Add your next todo</CardTitle>
-      <CardBody>
-        <FormGroup>
-          <Input
-            type='text'
-            name="title"
-            placeholder="Task title"
-            onChange={handleChange}
-            value={formData.title} />
-        </FormGroup>
-        <FormGroup>
-          <Input
-            type='textarea'
-            name="description"
-            placeholder="Describe your task"
-            onChange={handleChange}
-            value={formData.description} />
-<<<<<<< HEAD
-        </div>
-        <br />
-        <div>
-          When is this 'todo' due?:
-          <br />
-          <DatePicker selected={formData.completeDate} onChange={dateChange} />
-        </div>
-        <div>
-          <button type="submit">Add todo</button>
-        </div>
-        <div>
-          <button onClick={props.clearTodos}>clear all</button>
-        </div>
-      </div>
-    </form>
-=======
-        </FormGroup>
-        <FormGroup row>
-          <Label for="data" sm={4}>Due date</Label>
-          <Col sm={8}>
-          <DatePicker name='date' selected={date} onChange={dateChange} />
-          </Col>
-        </FormGroup>
+      <Form className="todo-form"
+        onSubmit={e => {
+          e.preventDefault();
+          e.stopPropagation();
+          handleClick();
+        }} >
+        <CardTitle>Add your next todo</CardTitle>
+        <CardBody>
+          <FormGroup>
+            <Input
+              type='text'
+              name="title"
+              placeholder="Task title"
+              onChange={handleChange}
+              value={formData.title} />
+          </FormGroup>
+          <FormGroup>
+            <Input
+              type='textarea'
+              name="description"
+              placeholder="Describe your task"
+              onChange={handleChange}
+              value={formData.description} />
+          </FormGroup>
+          <FormGroup row>
+            <Label for="data" sm={4}>Due date</Label>
+            <Col sm={8}>
+              <DatePicker name='date' selected={formData.completeDate} onChange={dateChange} />
+            </Col>
+          </FormGroup>
           <Button type="submit">Add</Button>
           <Button onClick={props.clearTodos}>Clear all</Button>
-      </CardBody>
-    </Form>
+        </CardBody>
+      </Form>
     </Card>
 
->>>>>>> 8f0ac17eaff13fd66224d29edd1a7d5dbd452e4e
   );
 }
 
