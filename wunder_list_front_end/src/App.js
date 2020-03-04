@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Navbar } from 'reactstrap';
 
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -19,25 +20,26 @@ import TodoForm from './components/TodoForm';
 const store = createStore(reducer, applyMiddleware(thunk, logger));
 
 function App() {
+
   return (
     <Router>
       <div className="App">
         <Provider store={store}>
           <header className="App-header">
-            <p>WundererererList</p>
+            <Navbar href='/'>
+              <img src='./assets/DashLogo.png' alt='logo' />
+            </Navbar>
           </header>
+
           {/* <Route exact path='/' component={TodoList} /> */}
           {/* <Route path='/login' component={Login} /> */}
-          <br />
-          <Link to='/login'>LOG IN</Link>
           {/* <TodoForm /> */}
           {/* <Login /> */}
+
           <Switch>
             <ProtectedRoute exact path='/list' component={TodoList} />
-            <Route exact path='/login' component={Login} />
-
+            <Route exact path='/' component={Login} />
           </Switch>
-
         </Provider>
       </div>
     </Router>
