@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Navbar } from 'reactstrap';
+// import { Navbar } from 'reactstrap';
 // import styled from 'styled-components';
-
+import { CardColumns, Button, Navbar } from 'reactstrap';
 
 
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
@@ -15,10 +15,13 @@ import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 
+
+
 import { todoReducer as reducer } from './reducers';
 import TodoList from './components/Todos/TodoList';
 import Login from './components/Credentialing/Login';
 import Register from './components/Credentialing/Register';
+import SearchBar from './components/SearchBar';
 
 const store = createStore(reducer, applyMiddleware(thunk, logger));
 
@@ -38,17 +41,19 @@ function App() {
           </header>
 
           <main>
-            <Switch>
-              <ProtectedRoute exact path='/list' component={TodoList} />
+            <CardColumns>
+              <Switch>
+                <ProtectedRoute exact path='/list' component={SearchBar} />
 
-              {/* <ProtectedRoute exact path='/update-task/:id'
+                {/* <ProtectedRoute exact path='/update-task/:id'
               render={props => {
                 return <UpdateTask {...props} />
               }} /> */}
 
-              <Route exact path='/' component={Login} />
-              <Route exact path='/register' component={Register} />
-            </Switch>
+                <Route exact path='/' component={Login} />
+                <Route exact path='/register' component={Register} />
+              </Switch>
+            </CardColumns>
           </main>
         </Provider>
       </div>
