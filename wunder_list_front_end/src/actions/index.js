@@ -45,22 +45,43 @@ export const addTodo = (formData) => dispatch => {
             dispatch({ type: ADD_ERROR, payload: "COULD NOT ADD YOUR TODO ITEM" })
         })
 }
-
-export const editTodo = () => dispatch => {
+//need to pass in correct data, might want to edit elsewhere, then pass in editData instead of todoID
+export const editTodo = (editData) => dispatch => {
     dispatch({ type: EDIT_TODO });
 
     return axiosWithAuth()
-        .put(``, {})
+        .put(`/api/task/${editData.id}`, { editData })
         .then(res => {
             console.log('todo edited?', res.data);
-            dispatch({ type: TODO_EDITED, payload: res.data })
+            // dispatch({ type: TODO_EDITED, payload: res.data })
         })
         .catch(err => {
             console.log('could not edit todo', err);
-            dispatch({ EDIT_ERROR, payload: "UNABLE TO EDIT YOUR TODO, YOU BETTER GO GET IT DONE" })
+            // dispatch({ EDIT_ERROR, payload: "UNABLE TO EDIT YOUR TODO, YOU BETTER GO GET IT DONE" })
 
         })
 }
+
+
+// const saveEdit = e => {
+//     e.preventDefault();
+//     // Make a put request to save your updated color
+//     // think about where will you get the id from...
+//     // where is is saved right now?
+//     setTimeout(() => {
+//         axiosWithAuth()
+//             .put(`/colors/${colorToEdit.id}`, colorToEdit)
+//             .then(res => {
+//                 console.log('did the color edit', res.data);
+//             })
+//             .catch(err => {
+//                 console.log('colors did not update', err)
+//             })
+//     }, 100)
+// }
+
+
+
 
 export const deleteTodo = (todo) => dispatch => {
     dispatch({ type: DELETE_TODO });
