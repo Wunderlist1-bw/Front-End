@@ -25,9 +25,16 @@ function App() {
     <Router>
       <div className="App">
         <Provider store={store}>
-          <header className="App-header">
+          <header className="mainmenu">
             <Navbar href='/'>
-              <img src='./assets/DashLogo.png' alt='logo' />
+              <div className="logoymenu logomenu1">
+                <img className="logo" src="./assets/DashLogo.png" alt="Company logo." />
+                <a href="#">How it Works</a>
+                <a href="#">Features</a>
+                <a href="#testimonial">Testimonials</a>
+              </div>
+              <div className="logoymenu logomenu2">
+              <div id="login">Login</div></div>
             </Navbar>
           </header>
 
