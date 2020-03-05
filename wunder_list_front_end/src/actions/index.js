@@ -62,27 +62,6 @@ export const editTodo = (editData) => dispatch => {
         })
 }
 
-
-// const saveEdit = e => {
-//     e.preventDefault();
-//     // Make a put request to save your updated color
-//     // think about where will you get the id from...
-//     // where is is saved right now?
-//     setTimeout(() => {
-//         axiosWithAuth()
-//             .put(`/colors/${colorToEdit.id}`, colorToEdit)
-//             .then(res => {
-//                 console.log('did the color edit', res.data);
-//             })
-//             .catch(err => {
-//                 console.log('colors did not update', err)
-//             })
-//     }, 100)
-// }
-
-
-
-
 export const deleteTodo = (todo) => dispatch => {
     dispatch({ type: DELETE_TODO });
 
@@ -97,13 +76,3 @@ export const deleteTodo = (todo) => dispatch => {
             dispatch({ type: DELETE_ERROR, payload: "YOU ARE STUCK WITH THIS TODO" })
         })
 }
-
-
-
-// const deleteColor = color => {
-//     // make a delete request to delete this color
-//     axiosWithAuth()
-//       .delete(`/colors/${color.id}`)
-//       .then(res => console.log('delete worked', res))
-//       .catch(err => console.log('delete did not work', err))
-//   };

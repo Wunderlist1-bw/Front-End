@@ -4,6 +4,7 @@ import {
     EDIT_TODO, TODO_EDITED, EDIT_ERROR,
     DELETE_TODO, TODO_DELETED, DELETE_ERROR
 } from '../actions';
+import { bindActionCreators } from 'redux';
 
 const initialState = {
     isLoading: false,
@@ -65,7 +66,7 @@ export const todoReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: true,
-
+                task: []
             }
         case TODO_EDITED:
             return {
@@ -77,7 +78,7 @@ export const todoReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: false,
-
+                error: action.payload
             }
 
         case DELETE_TODO:

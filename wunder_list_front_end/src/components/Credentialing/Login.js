@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Form, FormGroup, Input, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import axiosWithAuth from "../utils/axiosWithAuth";
+import axiosWithAuth from "../../utils/axiosWithAuth";
 
 const Login = props => {
   const [data, setData] = useState({
@@ -32,18 +32,18 @@ const Login = props => {
     <div>
       <h1>Sign in to Dash</h1>
       <Form className="login" onSubmit={handleSubmit}>
-      <FormGroup> 
-        <Col xs="12" md={{ size: 6, offset: 3 }}>
-        <Input type="text" name="username" id="username" placeholder="Username" value={data.username} onChange={handleChange} />
-        </Col>
-      </FormGroup>
-      <FormGroup>
-      <Col xs="12" md={{ size: 6, offset: 3 }}>
-        <Input type="password" name="password" id="Password" placeholder="Password" value={data.password} onChange={handleChange} />
-      </Col>
-      </FormGroup>
-      <Button className="login-button">Login</Button>
-      <Link to="/register">Register</Link>
+        <FormGroup>
+          <Col xs="12" md={{ size: 6, offset: 3 }}>
+            <Input type="text" name="username" id="username" placeholder="Username" value={data.username} onChange={handleChange} />
+          </Col>
+        </FormGroup>
+        <FormGroup>
+          <Col xs="12" md={{ size: 6, offset: 3 }}>
+            <Input type="password" name="password" id="Password" placeholder="Password" value={data.password} onChange={handleChange} />
+          </Col>
+        </FormGroup>
+        <Button className="login-button">Login</Button>
+        <Link to="/register">Register</Link>
       </Form>
     </div>
   );
