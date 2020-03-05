@@ -48,11 +48,8 @@ function TodoForm(props) {
     setFormData(initFormData);
   };
 
-<<<<<<< HEAD:wunder_list_front_end/src/components/TodoForm.js
   // const { title, description } = formData;
   console.log(typeof formData.completeDate)
-=======
->>>>>>> 5357d2fe9e94c9dcc0bed02338352604ef6bcdaa:wunder_list_front_end/src/components/Todos/TodoForm.js
   return (
     <Card>
       <Form className="todo-form"
