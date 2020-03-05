@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
+import '../../App.css';
 import "react-datepicker/dist/react-datepicker.css";
-import DatePicker from 'react-datepicker';
+// import DatePicker from 'react-datepicker';
 
 import { connect } from 'react-redux';
 
 import { Card, CardTitle, Form, CardBody, FormGroup, Input, Label, Col, Button } from 'reactstrap';
 
-
-import { addTodo, getList } from '../actions';
+import { addTodo, getList } from '../../actions';
 
 function TodoForm(props) {
 
   const initFormData = {
-    id: Date.now(),
+    id: '',
     title: '',
     description: '',
     completeDate: '',
@@ -21,7 +21,7 @@ function TodoForm(props) {
   }
 
   const [formData, setFormData] = useState(initFormData);
-  // const [date, setDate] = useState(Date.now());
+  const [date, setDate] = useState(Date.now());
 
   const handleChange = evt => {
     const { name, value } = evt.target;
@@ -29,12 +29,12 @@ function TodoForm(props) {
     setFormData({ ...formData, [name]: value });
   };
 
-  const dateChange = date => {
-    // setDate(date);
-    setFormData({ ...formData, completeDate: date })
-    console.log('DATE:', date);
-    console.log('formdata have date?', formData)
-  }
+  // const dateChange = date => {
+  //   setDate(date);
+  //   setFormData({ ...formData, completeDate: date })
+  //   console.log('DATE:', date);
+  //   console.log('formdata have date?', formData)
+  // }
 
   const handleClick = () => {
     const newFormData = {
@@ -48,16 +48,6 @@ function TodoForm(props) {
     setFormData(initFormData);
   };
 
-<<<<<<< HEAD
-
-  // const { title, description } = formData;
-  console.log(typeof formData.completeDate);
-
-
-=======
-  // const { title, description } = formData;
-  console.log(typeof formData.completeDate)
->>>>>>> ccb950fd08222baaab420079995dfd7369ff5faf
   return (
     <Card>
       <Form className="todo-form"
@@ -84,12 +74,21 @@ function TodoForm(props) {
               onChange={handleChange}
               value={formData.description} />
           </FormGroup>
-          <FormGroup row>
+          {/* <FormGroup>
+            <Input
+              type='date'
+              name="date"
+              placeholder="pick your due date"
+              onChange={dateChange}
+              value={formData.completeDate} />
+          </FormGroup> */}
+
+          {/* <FormGroup row>
             <Label for="data" sm={4}>Due date</Label>
             <Col sm={8}>
               <DatePicker name='date' selected={formData.completeDate} onChange={dateChange} />
             </Col>
-          </FormGroup>
+          </FormGroup> */}
           <Button type="submit">Add</Button>
           <Button onClick={props.clearTodos}>Clear all</Button>
         </CardBody>

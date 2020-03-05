@@ -3,9 +3,9 @@ import { CardColumns, Button } from 'reactstrap';
 
 import { connect } from 'react-redux';
 
-import { getList, deleteTodo } from '../actions';
+import { getList, deleteTodo } from '../../actions';
 
-import CardItem from '../components/CardItem';
+import CardItem from './CardItem';
 
 import TodoForm from './TodoForm';
 

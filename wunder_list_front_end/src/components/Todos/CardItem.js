@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import { Card, CardText, Form, Input, Label, Col, CardBody, CardTitle, CardSubtitle, Button, FormGroup } from 'reactstrap';
 import { connect } from 'react-redux';
 
+import './card.css';
+
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from 'react-datepicker';
 
 
-import { deleteTodo, getList, editTodo } from '../actions';
-import axiosWithAuth from '../utils/axiosWithAuth';
+import { deleteTodo, getList, editTodo } from '../../actions';
+import axiosWithAuth from '../../utils/axiosWithAuth';
 
 
 const CardItem = props => {
@@ -63,15 +65,20 @@ const CardItem = props => {
     // setFormData(initFormData);
   };
 
-  // const editTask = task => {
-  //   setEditing(true);
-  //   setTaskToEdit(task);
-  // };
+  // let className = 'complete';
 
+  const changeStyling = () => {
+    if (props.props.complete === 1) {
+      console.log('class changing?', props.props.complete)
+      return 'completed_now';
+    }
+  }
 
   return (
     <div className='cardItem'>
-      <Card width='33%'>
+
+      <Card width='33%' className={changeStyling()}>
+
         <CardBody>
           {/* <CardText className='editlink' onEdit={editPop}>Edit</CardText> */}
           {/* Insert route, link to an edit page/popover */}
@@ -121,6 +128,19 @@ const CardItem = props => {
           {/* <Button className='donebtn' onDone={doneStatus}>Done</Button> */}
           {/* Done checkbox will change status of the ticket. This element is NOT available for already 'Done' todo cards */}
           <CardText>{props.props.due_date}</CardText>
+          <Button
+            color="success"
+            className="completed_button"
+            onClick={
+              e => {
+                e.preventDefault();
+                console.log('what is the complete field', props.props.complete);
+                setFormData(
+                  props.props.complete = 1)
+                console.log('what is the complete field', props.props);
+              }}
+
+          >Mark complete</Button>
         </CardBody>
 
         {editing &&
