@@ -15,7 +15,12 @@ import thunk from 'redux-thunk';
 import { todoReducer as reducer } from './reducers';
 import TodoList from './components/TodoList';
 import Login from './components/Login';
-import TodoForm from './components/TodoForm';
+<<<<<<< HEAD
+// import TodoForm from './components/TodoForm';
+import UpdateTask from './components/UpdateTask';
+=======
+import Register from './components/Register';
+>>>>>>> ccb950fd08222baaab420079995dfd7369ff5faf
 
 const store = createStore(reducer, applyMiddleware(thunk, logger));
 
@@ -45,7 +50,16 @@ function App() {
 
           <Switch>
             <ProtectedRoute exact path='/list' component={TodoList} />
+
+
+            <ProtectedRoute exact path='/update-task/:id'
+              render={props => {
+                return <UpdateTask {...props} />
+              }} />
+
+
             <Route exact path='/' component={Login} />
+            <Route exact path='/register' component={Register} />
           </Switch>
         </Provider>
       </div>
