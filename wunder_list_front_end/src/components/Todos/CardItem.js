@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Card, CardText, Form, Input, Label, Col, CardBody, CardTitle, CardSubtitle, Button, FormGroup } from 'reactstrap';
+import { Card, CardText, Form, Input, Label, CardBody, CardTitle, CardSubtitle, Button, FormGroup } from 'reactstrap';
 import { connect } from 'react-redux';
 
 import './card.css';
 
-import "react-datepicker/dist/react-datepicker.css";
-import DatePicker from 'react-datepicker';
+// import "react-datepicker/dist/react-datepicker.css";
+// import DatePicker from 'react-datepicker';
 
 
 import { deleteTodo, getList, editTodo } from '../../actions';
@@ -13,14 +13,6 @@ import axiosWithAuth from '../../utils/axiosWithAuth';
 
 
 const CardItem = props => {
-  // [isDone, setIsDone] = useState(false);
-
-  // Not sure if we will handle the state via useState or redux
-
-  // const deleteItem = (event, item) => {
-  //   event.preventDefault();
-  //   props.deleteTodo(item);
-  // }
 
   const currentDate = new Date(2017, 5, 25);
 
@@ -42,15 +34,14 @@ const CardItem = props => {
 
   const handleChange = evt => {
     const { name, value } = evt.target;
-    console.log(dataToEdit)
     setDataToEdit({ ...dataToEdit, [name]: value });
   };
 
   const dateChange = date => {
     // setDate(date);
     setFormData({ ...formData, completeDate: date })
-    console.log('DATE:', date);
-    console.log('formdata have date?', formData)
+    // console.log('DATE:', date);
+    // console.log('formdata have date?', formData)
   }
 
   const handleClick = () => {
@@ -58,7 +49,7 @@ const CardItem = props => {
       ...dataToEdit,
       completeDate: Date.now()
     };
-    console.log('new form data', newFormData)
+    // console.log('new form data', newFormData)
     // console.log('testing handleClick', formData.completeDate)
     props.editTodo(newFormData)
       .then(() => props.getList());
@@ -69,7 +60,7 @@ const CardItem = props => {
 
   const changeStyling = () => {
     if (props.props.complete === 1) {
-      console.log('class changing?', props.props.complete)
+      // console.log('class changing?', props.props.complete)
       return 'completed_now';
     }
   }
@@ -91,15 +82,15 @@ const CardItem = props => {
             onClick={
               e => {
                 e.stopPropagation();
-                console.log('is c date working', currentDate);
-                console.log('test edit button response', props.props.id);
+                // console.log('is c date working', currentDate);
+                // console.log('test edit button response', props.props.id);
                 setEditing(true);
                 axiosWithAuth()
                   .get(`/api/task/${props.props.id}`)
                   .then(res => {
                     setDataToEdit(res.data);
                     // console.log('is res working', res.data)
-                    console.log('seeing if form data worked', dataToEdit)
+                    // console.log('seeing if form data worked', dataToEdit)
                   })
                   .catch(err => console.log(err))
 
@@ -120,8 +111,8 @@ const CardItem = props => {
               // deleteTodo(props.props)
               e => {
                 e.stopPropagation();
-                console.log('testing delete button response', props.props);
-                console.log(deleteTodo)
+                // console.log('testing delete button response', props.props);
+                // console.log(deleteTodo)
                 props.deleteTodo(props.props).then(() => props.getList());
               }
             }>Delete</Button>
@@ -134,10 +125,10 @@ const CardItem = props => {
             onClick={
               e => {
                 e.preventDefault();
-                console.log('what is the complete field', props.props.complete);
+                // console.log('what is the complete field', props.props.complete);
                 setFormData(
                   props.props.complete = 1)
-                console.log('what is the complete field', props.props);
+                // console.log('what is the complete field', props.props);
               }}
 
           >Mark complete</Button>
@@ -170,7 +161,7 @@ const CardItem = props => {
               </FormGroup>
               <FormGroup>
                 <Label for="data">Due date</Label><br />
-                  {/* <DatePicker name='date' selected={dataToEdit.completeDate} onChange={dateChange} /> */}
+                {/* <DatePicker name='date' selected={dataToEdit.completeDate} onChange={dateChange} /> */}
               </FormGroup>
               <Button type="submit">Submit Edits</Button>
               {/* <Button onClick={props.clearTodos}>Clear all</Button> */}

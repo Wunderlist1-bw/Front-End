@@ -3,11 +3,11 @@ import { CardColumns, Button } from 'reactstrap';
 
 import { connect } from 'react-redux';
 
-import { getList, deleteTodo } from '../../actions';
+import { getList } from '../../actions';
 
 import CardItem from './CardItem';
 import SearchBar from '../SearchBar';
-import TodoForm from './TodoForm';
+// import TodoForm from './TodoForm';
 
 const todoList = props => {
 
@@ -19,15 +19,20 @@ const todoList = props => {
     return (
         <div className='todo-app'>
             <div className='action-bar'>
-                <Button onClick={getTodos}>Fetch my todos</Button>
-                {/* <SearchBar /> */}
+                {/* <Button onClick={getTodos}>Fetch my todos</Button> */}
             </div>
 
             <CardColumns>
-                <TodoForm />
-                {props.list.map(todo => (
-                    <CardItem key={todo.title} props={todo} />
-                ))}
+                {/* <TodoForm /> */}
+                <Button onClick={getTodos}>Fetch deleted items</Button>
+                {props.list.filter(todo => {
+                    // console.log(todo);
+                    if (todo.complete === 0) {
+                        console.log(todo)
+                        // < CardItem key={todo.id} props={todo} />
+                    }
+                })}
+
             </CardColumns>
         </div>
     )
@@ -42,5 +47,5 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-    { getList, deleteTodo }
+    { getList }
 )(todoList);
