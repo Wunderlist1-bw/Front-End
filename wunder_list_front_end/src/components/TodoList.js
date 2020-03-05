@@ -20,10 +20,10 @@ const todoList = props => {
         <main>
             <Button onClick={getTodos}>Fetch my todos</Button>
             <CardColumns>
-            <TodoForm />
-            {props.list.map(todo => (
-                <CardItem key={todo.title} props={todo} />
-            ))}
+                <TodoForm />
+                {props.list.map(todo => (
+                    <CardItem key={todo.title} props={todo} />
+                ))}
             </CardColumns>
         </main>
     )
@@ -38,5 +38,5 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-    { getList }
+    { getList, deleteTodo }
 )(todoList);

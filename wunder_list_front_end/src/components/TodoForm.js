@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import "react-datepicker/dist/react-datepicker.css";
+import DatePicker from 'react-datepicker';
 
 import { connect } from 'react-redux';
 
 import { Card, CardTitle, Form, CardBody, FormGroup, Input, Label, Col, Button } from 'reactstrap';
 
-import DatePicker from 'react-datepicker';
+
 import { addTodo, getList } from '../actions';
 
 function TodoForm(props) {
@@ -47,8 +48,11 @@ function TodoForm(props) {
     setFormData(initFormData);
   };
 
-  const { title, description } = formData;
-  console.log(typeof formData.completeDate)
+
+  // const { title, description } = formData;
+  console.log(typeof formData.completeDate);
+
+
   return (
     <Card>
       <Form className="todo-form"

@@ -10,14 +10,15 @@ const initialState = {
     task: [
         {
             id: Date.now(),
-            category: 'home',
-            title: 'sample data',
-            description: 'sample description here',
-            completeDate: 'SOON',
+            category: '',
+            title: '',
+            description: '',
+            completeDate: '',
             complete: 0
         }
     ],
-    error: ''
+    error: '',
+    editing: false
 }
 
 export const todoReducer = (state = initialState, action) => {
