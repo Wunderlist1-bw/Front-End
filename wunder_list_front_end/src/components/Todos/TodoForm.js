@@ -15,13 +15,13 @@ function TodoForm(props) {
     id: '',
     title: '',
     description: '',
-    completeDate: '',
+    completeDate: '03/05/2020',
     complete: 0,
     users_id: 2
   }
 
   const [formData, setFormData] = useState(initFormData);
-  const [date, setDate] = useState(Date.now());
+  // const [date, setDate] = useState(Date.now());
 
   const handleChange = evt => {
     const { name, value } = evt.target;
@@ -37,13 +37,13 @@ function TodoForm(props) {
   // }
 
   const handleClick = () => {
-    const newFormData = {
-      ...formData,
-      completeDate: ""
-    };
-    console.log('new form data', newFormData)
-    console.log('testing handleClick', formData.completeDate)
-    props.addTodo(newFormData)
+    // const newFormData = {
+    //   ...formData,
+    //   completeDate: ""
+    // };
+    console.log('form data', formData)
+    // console.log('testing handleClick', formData.completeDate)
+    props.addTodo(formData)
       .then(() => props.getList());
     setFormData(initFormData);
   };
@@ -90,7 +90,7 @@ function TodoForm(props) {
             </Col>
           </FormGroup> */}
           <Button type="submit">Add</Button>
-          <Button onClick={props.clearTodos}>Clear all</Button>
+          {/* <Button onClick={props.clearTodos}>Clear all</Button> */}
         </CardBody>
       </Form>
     </Card>
