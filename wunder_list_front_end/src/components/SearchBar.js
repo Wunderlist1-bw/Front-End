@@ -1,34 +1,49 @@
-import React from "react";
-import { Form, Label, Input } from 'reactstrap';
+import React, { useState, useEffect } from "react";
+
+import axiosWithAuth from "../utils/axiosWithAuth";
+
+import CardItem from './Todos/CardItem';
+import { Card, CardTitle, Form, CardBody, FormGroup, Input, Label, Col, Button } from 'reactstrap';
 
 export default function SearchBar(props) {
 
   // This code should be integrated into the call for elements on the main page
-  // let [cardList, setCardList] = useState([])
-  // const [searchQuery, setSearchQuery] = useState('');
+  let [cardList, setCardList] = useState([])
+  const [searchQuery, setSearchQuery] = useState('');
 
-  // useEffect(() => {
-  //     axios
-  //   .get(`backend')
-  //       .then(response => {
-  //         let results = response.data.filter(card => {
-  //           return card.title.toLowerCase().includes(searchQuery.toLowerCase())
-  //         });
-  //         setCardList(results);
-  //       })
-  //       .catch(error => console.log('Call not complete', error))
-  //   }, [searchQuery]);
+  const handleChange = e => {
+    setSearchQuery(e.target.value);
+  }
+
+  useEffect(() => {
+    axiosWithAuth()
+      .get(`/api/task`)
+      .then(response => {
+        console.log('what is response', response.data)
+        let results = response.data.filter(card => {
+          return card.title.toLowerCase().includes(searchQuery.toLowerCase())
+        });
+        console.log('what are results', results)
+        setCardList(results);
+      })
+      .catch(error => console.log('Call not complete', error))
+  }, [searchQuery]);
 
 
   return (
-    <Form className="search-form">
+    <Card><Form className="search-form">
       <Input
         id='term'
         type='text'
         name='textfield'
         placeholder='Search...'
-        value={props.searchQuery}
-        onChange={props.handleChange} />
+        value={searchQuery}
+        onChange={handleChange} />
     </Form>
+      {cardList.map(todo => (
+        <CardItem key={todo.title} props={todo} />
+      ))}
+    </Card>
+
   );
 }
