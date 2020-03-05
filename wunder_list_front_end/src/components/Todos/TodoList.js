@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { getList, deleteTodo } from '../../actions';
 
 import CardItem from './CardItem';
-
+import SearchBar from '../SearchBar';
 import TodoForm from './TodoForm';
 
 const todoList = props => {
@@ -17,15 +17,19 @@ const todoList = props => {
     }
 
     return (
-        <main>
-            <Button onClick={getTodos}>Fetch my todos</Button>
+        <div className='todo-app'>
+            <div className='action-bar'>
+                <Button onClick={getTodos}>Fetch my todos</Button>
+                <SearchBar />
+            </div>
+            
             <CardColumns>
                 <TodoForm />
                 {props.list.map(todo => (
                     <CardItem key={todo.title} props={todo} />
                 ))}
             </CardColumns>
-        </main>
+        </div>
     )
 }
 

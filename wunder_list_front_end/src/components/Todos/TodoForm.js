@@ -12,7 +12,7 @@ import { addTodo, getList } from '../../actions';
 function TodoForm(props) {
 
   const initFormData = {
-    id: '',
+    id: Date.now(),
     title: '',
     description: '',
     completeDate: '03/05/2020',
@@ -48,6 +48,8 @@ function TodoForm(props) {
     setFormData(initFormData);
   };
 
+  // const { title, description } = formData;
+  console.log(typeof formData.completeDate)
   return (
     <Card>
       <Form className="todo-form"
@@ -56,7 +58,7 @@ function TodoForm(props) {
           e.stopPropagation();
           handleClick();
         }} >
-        <CardTitle>Add your next todo</CardTitle>
+        <CardTitle className='todo-title'>Add your next todo</CardTitle>
         <CardBody>
           <FormGroup>
             <Input
@@ -85,12 +87,10 @@ function TodoForm(props) {
 
           {/* <FormGroup row>
             <Label for="data" sm={4}>Due date</Label>
-            <Col sm={8}>
               <DatePicker name='date' selected={formData.completeDate} onChange={dateChange} />
-            </Col>
           </FormGroup> */}
           <Button type="submit">Add</Button>
-          {/* <Button onClick={props.clearTodos}>Clear all</Button> */}
+
         </CardBody>
       </Form>
     </Card>
