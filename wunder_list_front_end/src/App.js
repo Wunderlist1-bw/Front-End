@@ -15,7 +15,7 @@ import thunk from 'redux-thunk';
 import { todoReducer as reducer } from './reducers';
 import TodoList from './components/TodoList';
 import Login from './components/Login';
-import TodoForm from './components/TodoForm';
+import Register from './components/Register';
 
 const store = createStore(reducer, applyMiddleware(thunk, logger));
 
@@ -39,6 +39,7 @@ function App() {
           <Switch>
             <ProtectedRoute exact path='/list' component={TodoList} />
             <Route exact path='/' component={Login} />
+            <Route exact path='/register' component={Register} />
           </Switch>
         </Provider>
       </div>
