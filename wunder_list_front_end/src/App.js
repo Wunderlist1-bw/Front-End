@@ -3,7 +3,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import { Navbar } from 'reactstrap';
 // import styled from 'styled-components';
-import { CardColumns, Button, Navbar } from 'reactstrap';
+import { CardColumns, Navbar } from 'reactstrap';
 
 
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
@@ -22,6 +22,7 @@ import TodoList from './components/Todos/TodoList';
 import Login from './components/Credentialing/Login';
 import Register from './components/Credentialing/Register';
 import SearchBar from './components/SearchBar';
+import DeletedItems from './components/Todos/DeletedItems';
 
 const store = createStore(reducer, applyMiddleware(thunk, logger));
 
@@ -38,22 +39,29 @@ function App() {
             <Navbar href='/'>
               <img className="logo" src={require("./assets/DashLogo.png")} alt="Company logo." />
             </Navbar>
+            <Link to='/list'>List of tasks</Link>
+            <Link to='/search'>Search for tasks</Link>
+
+            <Link to='/deleted'>Recently deleted tasks</Link>
+
           </header>
 
           <main>
-            <CardColumns>
-              <Switch>
-                <ProtectedRoute exact path='/list' component={SearchBar} />
+            {/* <CardColumns> */}
+            <Switch>
+              <ProtectedRoute exact path='/list' component={TodoList} />
+              <ProtectedRoute exact path='/search' component={SearchBar} />
 
-                {/* <ProtectedRoute exact path='/update-task/:id'
+              <ProtectedRoute exact path='/deleted' component={DeletedItems} />
+              {/* <ProtectedRoute exact path='/update-task/:id'
               render={props => {
                 return <UpdateTask {...props} />
               }} /> */}
 
-                <Route exact path='/' component={Login} />
-                <Route exact path='/register' component={Register} />
-              </Switch>
-            </CardColumns>
+              <Route exact path='/' component={Login} />
+              <Route exact path='/register' component={Register} />
+            </Switch>
+            {/* </CardColumns> */}
           </main>
         </Provider>
       </div>

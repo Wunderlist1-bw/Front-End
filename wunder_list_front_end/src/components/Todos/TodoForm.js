@@ -25,7 +25,7 @@ function TodoForm(props) {
 
   const handleChange = evt => {
     const { name, value } = evt.target;
-    console.log(formData)
+    // console.log(formData)
     setFormData({ ...formData, [name]: value });
   };
 
@@ -41,7 +41,7 @@ function TodoForm(props) {
     //   ...formData,
     //   completeDate: ""
     // };
-    console.log('form data', formData)
+    // console.log('form data', formData)
     // console.log('testing handleClick', formData.completeDate)
     props.addTodo(formData)
       .then(() => props.getList());
@@ -49,7 +49,7 @@ function TodoForm(props) {
   };
 
   // const { title, description } = formData;
-  console.log(typeof formData.completeDate)
+  // console.log(typeof formData.completeDate)
   return (
     <Card>
       <Form className="todo-form"

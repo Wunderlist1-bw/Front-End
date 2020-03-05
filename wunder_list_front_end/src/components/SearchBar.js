@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import axiosWithAuth from "../utils/axiosWithAuth";
 
 import CardItem from './Todos/CardItem';
-import { Card, CardTitle, Form, CardBody, FormGroup, Input, Label, Col, Button } from 'reactstrap';
+import { Card, Form, Input } from 'reactstrap';
 
 export default function SearchBar(props) {
 
@@ -19,11 +19,11 @@ export default function SearchBar(props) {
     axiosWithAuth()
       .get(`/api/task`)
       .then(response => {
-        console.log('what is response', response.data)
+        // console.log('what is response', response.data)
         let results = response.data.filter(card => {
           return card.title.toLowerCase().includes(searchQuery.toLowerCase())
         });
-        console.log('what are results', results)
+        // console.log('what are results', results)
         setCardList(results);
       })
       .catch(error => console.log('Call not complete', error))
