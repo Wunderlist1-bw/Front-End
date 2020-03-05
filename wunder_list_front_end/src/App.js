@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar } from 'reactstrap';
+import styled from 'styled-components';
+
 
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -15,52 +17,38 @@ import thunk from 'redux-thunk';
 import { todoReducer as reducer } from './reducers';
 import TodoList from './components/TodoList';
 import Login from './components/Login';
-<<<<<<< HEAD
-// import TodoForm from './components/TodoForm';
-import UpdateTask from './components/UpdateTask';
-=======
 import Register from './components/Register';
->>>>>>> ccb950fd08222baaab420079995dfd7369ff5faf
 
 const store = createStore(reducer, applyMiddleware(thunk, logger));
 
 function App() {
 
+
+
+
   return (
     <Router>
       <div className="App">
         <Provider store={store}>
-          <header className="mainmenu">
+          <header className="App-header">
             <Navbar href='/'>
-              <div className="logoymenu logomenu1">
-                <img className="logo" src="./assets/DashLogo.png" alt="Company logo." />
-                <a href="#">How it Works</a>
-                <a href="#">Features</a>
-                <a href="#testimonial">Testimonials</a>
-              </div>
-              <div className="logoymenu logomenu2">
-              <div id="login">Login</div></div>
+                <img className="logo" src={require("./assets/DashLogo.png")}  alt="Company logo." />
             </Navbar>
           </header>
 
-          {/* <Route exact path='/' component={TodoList} /> */}
-          {/* <Route path='/login' component={Login} /> */}
-          {/* <TodoForm /> */}
-          {/* <Login /> */}
-
+          <main>
           <Switch>
             <ProtectedRoute exact path='/list' component={TodoList} />
 
-
-            <ProtectedRoute exact path='/update-task/:id'
+            {/* <ProtectedRoute exact path='/update-task/:id'
               render={props => {
                 return <UpdateTask {...props} />
-              }} />
-
+              }} /> */}
 
             <Route exact path='/' component={Login} />
             <Route exact path='/register' component={Register} />
-          </Switch>
+            </Switch>
+          </main>
         </Provider>
       </div>
     </Router>

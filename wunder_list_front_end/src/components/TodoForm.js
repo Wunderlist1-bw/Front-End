@@ -48,16 +48,8 @@ function TodoForm(props) {
     setFormData(initFormData);
   };
 
-<<<<<<< HEAD
-
-  // const { title, description } = formData;
-  console.log(typeof formData.completeDate);
-
-
-=======
   // const { title, description } = formData;
   console.log(typeof formData.completeDate)
->>>>>>> ccb950fd08222baaab420079995dfd7369ff5faf
   return (
     <Card>
       <Form className="todo-form"
@@ -66,7 +58,7 @@ function TodoForm(props) {
           e.stopPropagation();
           handleClick();
         }} >
-        <CardTitle>Add your next todo</CardTitle>
+        <CardTitle className='todo-title'>Add your next todo</CardTitle>
         <CardBody>
           <FormGroup>
             <Input
@@ -86,12 +78,10 @@ function TodoForm(props) {
           </FormGroup>
           <FormGroup row>
             <Label for="data" sm={4}>Due date</Label>
-            <Col sm={8}>
               <DatePicker name='date' selected={formData.completeDate} onChange={dateChange} />
-            </Col>
           </FormGroup>
           <Button type="submit">Add</Button>
-          <Button onClick={props.clearTodos}>Clear all</Button>
+          <Button onClick={props.clearTodos}>Clear</Button>
         </CardBody>
       </Form>
     </Card>

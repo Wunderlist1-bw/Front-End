@@ -148,11 +148,9 @@ const CardItem = props => {
                   onChange={handleChange}
                   value={dataToEdit.description} />
               </FormGroup>
-              <FormGroup row>
-                <Label for="data" sm={4}>Due date</Label>
-                <Col sm={8}>
+              <FormGroup>
+                <Label for="data">Due date</Label><br />
                   {/* <DatePicker name='date' selected={dataToEdit.completeDate} onChange={dateChange} /> */}
-                </Col>
               </FormGroup>
               <Button type="submit">Submit Edits</Button>
               {/* <Button onClick={props.clearTodos}>Clear all</Button> */}

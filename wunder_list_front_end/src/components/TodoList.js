@@ -17,15 +17,18 @@ const todoList = props => {
     }
 
     return (
-        <main>
-            <Button onClick={getTodos}>Fetch my todos</Button>
+        <div className='todo-app'>
+            <div className='action-bar'>
+                <Button onClick={getTodos}>Fetch my todos</Button>
+            </div>
+            
             <CardColumns>
                 <TodoForm />
                 {props.list.map(todo => (
                     <CardItem key={todo.title} props={todo} />
                 ))}
             </CardColumns>
-        </main>
+        </div>
     )
 }
 

@@ -30,7 +30,6 @@ const Register = props => {
 
   return (
     <div>
-      <h1>Sign Up</h1>
       <Form className="register" onSubmit={handleSubmit}>
       <FormGroup> 
         <Col xs="12" md={{ size: 6, offset: 3 }}>
@@ -47,7 +46,6 @@ const Register = props => {
         <Input type="password" name="password" id="Password" placeholder="Password" value={data.password} onChange={handleChange} />
       </Col>
       </FormGroup>
-      <Button className="register-button">Register</Button>
       </Form>
     </div>
   );
