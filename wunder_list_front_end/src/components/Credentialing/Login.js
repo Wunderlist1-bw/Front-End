@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Register from './Register';
 import { Button, Form, FormGroup, Input, Col, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import axiosWithAuth from "../utils/axiosWithAuth";
+import axiosWithAuth from "../../utils/axiosWithAuth";
 
 const Login = props => {
 
@@ -38,6 +38,7 @@ const Login = props => {
     <div>
       <h1>Sign in</h1>
       <Form className="login" onSubmit={handleSubmit}>
+<<<<<<< HEAD:wunder_list_front_end/src/components/Login.js
       <FormGroup> 
         <Col xs="12" md={{ size: 6, offset: 3 }}>
         <Input type="text" name="username" id="username" placeholder="Username" value={data.username} onChange={handleChange} />
@@ -60,6 +61,20 @@ const Login = props => {
         </ModalFooter>
       </Modal>
       <Button className="register-button"onClick={toggle}>Register</Button>
+=======
+        <FormGroup>
+          <Col xs="12" md={{ size: 6, offset: 3 }}>
+            <Input type="text" name="username" id="username" placeholder="Username" value={data.username} onChange={handleChange} />
+          </Col>
+        </FormGroup>
+        <FormGroup>
+          <Col xs="12" md={{ size: 6, offset: 3 }}>
+            <Input type="password" name="password" id="Password" placeholder="Password" value={data.password} onChange={handleChange} />
+          </Col>
+        </FormGroup>
+        <Button className="login-button">Login</Button>
+        <Link to="/register">Register</Link>
+>>>>>>> 5357d2fe9e94c9dcc0bed02338352604ef6bcdaa:wunder_list_front_end/src/components/Credentialing/Login.js
       </Form>
     </div>
   );

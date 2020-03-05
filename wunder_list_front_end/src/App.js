@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
-import ProtectedRoute from './components/ProtectedRoute';
+import ProtectedRoute from './utils/ProtectedRoute';
 
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
@@ -15,9 +15,9 @@ import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 
 import { todoReducer as reducer } from './reducers';
-import TodoList from './components/TodoList';
-import Login from './components/Login';
-import Register from './components/Register';
+import TodoList from './components/Todos/TodoList';
+import Login from './components/Credentialing/Login';
+import Register from './components/Credentialing/Register';
 
 const store = createStore(reducer, applyMiddleware(thunk, logger));
 

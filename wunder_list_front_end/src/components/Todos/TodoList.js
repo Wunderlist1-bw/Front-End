@@ -3,10 +3,14 @@ import { CardColumns, Button } from 'reactstrap';
 
 import { connect } from 'react-redux';
 
-import { getList, deleteTodo } from '../actions';
+import { getList, deleteTodo } from '../../actions';
 
 import CardItem from './CardItem';
+<<<<<<< HEAD:wunder_list_front_end/src/components/TodoList.js
 import SearchBar from './SearchBar';
+=======
+
+>>>>>>> 5357d2fe9e94c9dcc0bed02338352604ef6bcdaa:wunder_list_front_end/src/components/Todos/TodoList.js
 import TodoForm from './TodoForm';
 
 const todoList = props => {

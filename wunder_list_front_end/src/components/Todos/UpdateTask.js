@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axiosWithAuth from '../utils/axiosWithAuth';
+import axiosWithAuth from '../../utils/axiosWithAuth';
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { Card, CardTitle, Form, CardBody, FormGroup, Input, Label, Col, Button } from 'reactstrap';
 
 import DatePicker from 'react-datepicker';
-import { addTodo, getList } from '../actions';
+import { addTodo, getList } from '../../actions';
 
 
 const emptyTask = {
