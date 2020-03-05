@@ -12,16 +12,16 @@ import { addTodo, getList } from '../../actions';
 function TodoForm(props) {
 
   const initFormData = {
-    id: '',
+    id: Date.now(),
     title: '',
     description: '',
-    completeDate: '',
+    completeDate: '03/05/2020',
     complete: 0,
     users_id: 2
   }
 
   const [formData, setFormData] = useState(initFormData);
-  const [date, setDate] = useState(Date.now());
+  // const [date, setDate] = useState(Date.now());
 
   const handleChange = evt => {
     const { name, value } = evt.target;
@@ -37,17 +37,19 @@ function TodoForm(props) {
   // }
 
   const handleClick = () => {
-    const newFormData = {
-      ...formData,
-      completeDate: ""
-    };
-    console.log('new form data', newFormData)
-    console.log('testing handleClick', formData.completeDate)
-    props.addTodo(newFormData)
+    // const newFormData = {
+    //   ...formData,
+    //   completeDate: ""
+    // };
+    console.log('form data', formData)
+    // console.log('testing handleClick', formData.completeDate)
+    props.addTodo(formData)
       .then(() => props.getList());
     setFormData(initFormData);
   };
 
+  // const { title, description } = formData;
+  console.log(typeof formData.completeDate)
   return (
     <Card>
       <Form className="todo-form"
@@ -56,7 +58,7 @@ function TodoForm(props) {
           e.stopPropagation();
           handleClick();
         }} >
-        <CardTitle>Add your next todo</CardTitle>
+        <CardTitle className='todo-title'>Add your next todo</CardTitle>
         <CardBody>
           <FormGroup>
             <Input
@@ -85,12 +87,10 @@ function TodoForm(props) {
 
           {/* <FormGroup row>
             <Label for="data" sm={4}>Due date</Label>
-            <Col sm={8}>
               <DatePicker name='date' selected={formData.completeDate} onChange={dateChange} />
-            </Col>
           </FormGroup> */}
           <Button type="submit">Add</Button>
-          <Button onClick={props.clearTodos}>Clear all</Button>
+
         </CardBody>
       </Form>
     </Card>

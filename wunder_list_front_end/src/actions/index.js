@@ -50,7 +50,7 @@ export const editTodo = (editData) => dispatch => {
     dispatch({ type: EDIT_TODO });
 
     return axiosWithAuth()
-        .put(`/api/task/${editData.id}`, { editData })
+        .put(`/api/task/${editData.id}`, editData)
         .then(res => {
             console.log('todo edited?', res.data);
             // dispatch({ type: TODO_EDITED, payload: res.data })

@@ -2,6 +2,9 @@ import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar } from 'reactstrap';
+// import styled from 'styled-components';
+
+
 
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import ProtectedRoute from './utils/ProtectedRoute';
@@ -21,22 +24,32 @@ const store = createStore(reducer, applyMiddleware(thunk, logger));
 
 function App() {
 
+
+
+
   return (
     <Router>
       <div className="App">
         <Provider store={store}>
           <header className="App-header">
             <Navbar href='/'>
-              <img src='./assets/DashLogo.png' alt='logo' />
+              <img className="logo" src={require("./assets/DashLogo.png")} alt="Company logo." />
             </Navbar>
           </header>
 
-          <Switch>
-            <ProtectedRoute exact path='/list' component={TodoList} />
+          <main>
+            <Switch>
+              <ProtectedRoute exact path='/list' component={TodoList} />
 
-            <Route exact path='/' component={Login} />
-            <Route exact path='/register' component={Register} />
-          </Switch>
+              {/* <ProtectedRoute exact path='/update-task/:id'
+              render={props => {
+                return <UpdateTask {...props} />
+              }} /> */}
+
+              <Route exact path='/' component={Login} />
+              <Route exact path='/register' component={Register} />
+            </Switch>
+          </main>
         </Provider>
       </div>
     </Router>
