@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 
 import { getList, deleteTodo } from '../actions';
 
-import CardItem from '../components/CardItem';
-
+import CardItem from './CardItem';
+import SearchBar from './SearchBar';
 import TodoForm from './TodoForm';
 
 const todoList = props => {
@@ -20,6 +20,7 @@ const todoList = props => {
         <div className='todo-app'>
             <div className='action-bar'>
                 <Button onClick={getTodos}>Fetch my todos</Button>
+                <SearchBar />
             </div>
             
             <CardColumns>

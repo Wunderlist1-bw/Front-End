@@ -46,3 +46,7 @@ main h1 {
 .card-title {
   margin-top: .5rem;
 }
+
+.search-form {
+  width: 10rem;
+}
