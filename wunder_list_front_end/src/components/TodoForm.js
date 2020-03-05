@@ -39,7 +39,7 @@ function TodoForm(props) {
   const handleClick = () => {
     const newFormData = {
       ...formData,
-      completeDate: "hello world"
+      completeDate: ""
     };
     console.log('new form data', newFormData)
     console.log('testing handleClick', formData.completeDate)
@@ -48,11 +48,16 @@ function TodoForm(props) {
     setFormData(initFormData);
   };
 
+<<<<<<< HEAD
 
   // const { title, description } = formData;
   console.log(typeof formData.completeDate);
 
 
+=======
+  // const { title, description } = formData;
+  console.log(typeof formData.completeDate)
+>>>>>>> ccb950fd08222baaab420079995dfd7369ff5faf
   return (
     <Card>
       <Form className="todo-form"
