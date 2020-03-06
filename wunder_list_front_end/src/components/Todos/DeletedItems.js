@@ -1,5 +1,7 @@
-import React from 'react';
-import { CardColumns, Button } from 'reactstrap';
+import React, { useState, useEffect } from 'react';
+import { CardColumns, Button, Card } from 'reactstrap';
+
+import axiosWithAuth from '../../utils/axiosWithAuth';
 
 import { connect } from 'react-redux';
 
@@ -9,43 +11,52 @@ import CardItem from './CardItem';
 import SearchBar from '../SearchBar';
 // import TodoForm from './TodoForm';
 
-const todoList = props => {
+export default function DeletedItems(props) {
 
-    const getTodos = e => {
-        e.preventDefault();
-        props.getList();
-    }
+    // const getTodos = e => {
+    //     e.preventDefault();
+    //     props.getList();
+    // }
+
+    const [deleted, setDeleted] = useState([]);
+
+    useEffect(() => {
+        axiosWithAuth()
+            .get(`/api/task`)
+            .then(response => {
+                console.log('response', response)
+                let results = response.data.filter(card => {
+                    return card.complete === 1;
+                });
+                console.log('what are results', results)
+                setDeleted(results);
+            })
+            .catch(error => console.log('Call not complete', error))
+    }, []);
 
     return (
-        <div className='todo-app'>
-            <div className='action-bar'>
-                {/* <Button onClick={getTodos}>Fetch my todos</Button> */}
-            </div>
 
-            <CardColumns>
-                {/* <TodoForm /> */}
-                <Button onClick={getTodos}>Fetch deleted items</Button>
-                {props.list.filter(todo => {
+        <div className='deleted_tasks'>
+            {/* <Button onClick={getTodos}>Fetch my todos</Button> */}
+
+            <Card>
+                {deleted.map(todo => (
+                    <CardItem key={todo.title} props={todo} />
+                ))}
+            </Card>
+
+            {/* <CardColumns> */}
+            {/* <TodoForm /> */}
+            {/* <Button onClick={getTodos}>Fetch deleted items</Button> */}
+
+            {/* {props.list.filter(todo => {
                     // console.log(todo);
-                    if (todo.complete === 0) {
+                    if (todo.complete === ) {
                         console.log(todo)
                         // < CardItem key={todo.id} props={todo} />
-                    }
-                })}
-
-            </CardColumns>
-        </div>
+                    } */}
+        </div >
     )
 }
 
-const mapStateToProps = state => {
-    return {
-        list: state.task,
-        error: state.error
-    }
-}
-
-export default connect(
-    mapStateToProps,
-    { getList }
-)(todoList);
+// export default deletedItems;
