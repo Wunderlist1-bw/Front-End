@@ -8,7 +8,7 @@ import { Card, Form, Input } from 'reactstrap';
 export default function SearchBar(props) {
 
   // This code should be integrated into the call for elements on the main page
-  let [cardList, setCardList] = useState([])
+  const [cardList, setCardList] = useState([])
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleChange = e => {
