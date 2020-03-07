@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Card, CardText, Form, Input, Label, CardBody, CardTitle, CardSubtitle, Button, FormGroup } from 'reactstrap';
 import { connect } from 'react-redux';
+import { motion } from "framer-motion";
+
 
 import './card.css';
 
@@ -65,10 +67,18 @@ const CardItem = props => {
     }
   }
 
+
+
   return (
     <div className='cardItem'>
-
-      <Card width='33%' className={changeStyling()}>
+        <motion.div
+          whileHover={{
+            scale: 1.2,
+            transition: { duration: 1 },
+          }}
+          whileTap={{ scale: 0.9 }}
+        />
+      <Card width='33%' className={changeStyling()} >
 
         <CardBody>
           {/* <CardText className='editlink' onEdit={editPop}>Edit</CardText> */}

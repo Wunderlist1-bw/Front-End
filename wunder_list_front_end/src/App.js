@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { CardColumns, Navbar } from 'reactstrap';
 
 
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ProtectedRoute from './utils/ProtectedRoute';
 
 import { createStore, applyMiddleware } from 'redux';
@@ -39,11 +39,6 @@ function App() {
             <Navbar href='/'>
               <img className="logo" src={require("./assets/DashLogo.png")} alt="Company logo." />
             </Navbar>
-            <Link to='/list'>List of tasks</Link>
-            <Link to='/search'>Search for tasks</Link>
-
-            <Link to='/deleted'>Recently deleted tasks</Link>
-
           </header>
 
           <main>

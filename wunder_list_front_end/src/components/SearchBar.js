@@ -2,6 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Form, Label, Input } from 'reactstrap';
 import axiosWithAuth from '../utils/axiosWithAuth';
 
+import CardItem from './Todos/CardItem';
+import Actionbar from './Actionbar';
+
+import { CardColumns, Button } from 'reactstrap';
+
 export default function SearchBar(props) {
 
     let [cardList, setCardList] = useState([])
@@ -18,15 +23,17 @@ export default function SearchBar(props) {
             let results = response.data.filter(card => {
               return card.title.toLowerCase().includes(searchQuery.toLowerCase())
             });
-            console.log('search items', results)
             setCardList(results);
           })
           .catch(error => console.log('Call not complete', error))
       }, [searchQuery]);
-      console.log(cardList)
     
   return (
-      <Form className="search-form">
+		<>
+		  	<Actionbar/>
+
+
+		    <Form className="search-form">
         <Input 
           id='term'
           type='text'
@@ -35,5 +42,13 @@ export default function SearchBar(props) {
           value={searchQuery}
           onChange={handleChange} />
       </Form>
-  );
+
+			<CardColumns>
+			{cardList.map(todo => (
+					<CardItem key={todo.id} props={todo} />
+			))}
+			</CardColumns>
+		</>
+
+	);
 }

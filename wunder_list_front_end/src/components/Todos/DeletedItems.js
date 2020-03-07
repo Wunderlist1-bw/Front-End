@@ -8,7 +8,9 @@ import { connect } from 'react-redux';
 import { getList } from '../../actions';
 
 import CardItem from './CardItem';
-import SearchBar from '../SearchBar';
+import Actionbar from '../Actionbar';
+
+// import SearchBar from '../SearchBar';
 // import TodoForm from './TodoForm';
 
 export default function DeletedItems(props) {
@@ -35,15 +37,16 @@ export default function DeletedItems(props) {
     }, []);
 
     return (
+        <>
+            <Actionbar />
 
-        <div className='deleted_tasks'>
-            {/* <Button onClick={getTodos}>Fetch my todos</Button> */}
 
-            <Card>
+            <div className='deleted_tasks'>
+            <CardColumns>
                 {deleted.map(todo => (
                     <CardItem key={todo.title} props={todo} />
                 ))}
-            </Card>
+            </CardColumns>
 
             {/* <CardColumns> */}
             {/* <TodoForm /> */}
@@ -56,6 +59,9 @@ export default function DeletedItems(props) {
                         // < CardItem key={todo.id} props={todo} />
                     } */}
         </div >
+        </>
+
+
     )
 }
 

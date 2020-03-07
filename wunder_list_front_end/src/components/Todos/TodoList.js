@@ -1,12 +1,13 @@
 import React from 'react';
-import { CardColumns, Button } from 'reactstrap';
+import { CardColumns, Button, Navbar } from 'reactstrap';
 
 import { connect } from 'react-redux';
 
 import { getList, deleteTodo } from '../../actions';
 
+import Actionbar from '../Actionbar';
 import CardItem from './CardItem';
-import SearchBar from '../SearchBar';
+// import SearchBar from '../SearchBar';
 import TodoForm from './TodoForm';
 
 const todoList = props => {
@@ -17,12 +18,12 @@ const todoList = props => {
     }
 
     return (
-        <div className='todo-app'>
-            <div className='action-bar'>
-                <Button onClick={getTodos}>Fetch my todos</Button>
-                {/* <SearchBar /> */}
-            </div>
+        <>
 
+        <Actionbar/>
+
+        <div className='todo-app'>
+            <Button onClick={getTodos}>Fetch my todos</Button>
             <CardColumns>
                 <TodoForm />
                 {props.list.map(todo => (
@@ -30,6 +31,7 @@ const todoList = props => {
                 ))}
             </CardColumns>
         </div>
+        </>
     )
 }
 
