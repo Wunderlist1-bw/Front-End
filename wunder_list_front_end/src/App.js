@@ -1,8 +1,6 @@
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import { Navbar } from 'reactstrap';
-// import styled from 'styled-components';
 import { CardColumns, Navbar } from 'reactstrap';
 
 
@@ -15,8 +13,6 @@ import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 
-
-
 import { todoReducer as reducer } from './reducers';
 import TodoList from './components/Todos/TodoList';
 import Login from './components/Credentialing/Login';
@@ -28,9 +24,6 @@ const store = createStore(reducer, applyMiddleware(thunk, logger));
 
 function App() {
 
-
-
-
   return (
     <Router>
       <div className="App">
@@ -41,27 +34,20 @@ function App() {
             </Navbar>
             <Link to='/list'>List of tasks</Link>
             <Link to='/search'>Search for tasks</Link>
-
             <Link to='/deleted'>Recently deleted tasks</Link>
 
           </header>
 
           <main>
-            {/* <CardColumns> */}
             <Switch>
               <ProtectedRoute exact path='/list' component={TodoList} />
               <ProtectedRoute exact path='/search' component={SearchBar} />
 
               <ProtectedRoute exact path='/deleted' component={DeletedItems} />
-              {/* <ProtectedRoute exact path='/update-task/:id'
-              render={props => {
-                return <UpdateTask {...props} />
-              }} /> */}
 
               <Route exact path='/' component={Login} />
               <Route exact path='/register' component={Register} />
             </Switch>
-            {/* </CardColumns> */}
           </main>
         </Provider>
       </div>

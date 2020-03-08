@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import '../../App.css';
 import "react-datepicker/dist/react-datepicker.css";
-// import DatePicker from 'react-datepicker';
 
 import { connect } from 'react-redux';
 
@@ -21,35 +20,18 @@ function TodoForm(props) {
   }
 
   const [formData, setFormData] = useState(initFormData);
-  // const [date, setDate] = useState(Date.now());
 
   const handleChange = evt => {
     const { name, value } = evt.target;
-    // console.log(formData)
     setFormData({ ...formData, [name]: value });
   };
 
-  // const dateChange = date => {
-  //   setDate(date);
-  //   setFormData({ ...formData, completeDate: date })
-  //   console.log('DATE:', date);
-  //   console.log('formdata have date?', formData)
-  // }
-
   const handleClick = () => {
-    // const newFormData = {
-    //   ...formData,
-    //   completeDate: ""
-    // };
-    // console.log('form data', formData)
-    // console.log('testing handleClick', formData.completeDate)
     props.addTodo(formData)
       .then(() => props.getList());
     setFormData(initFormData);
   };
 
-  // const { title, description } = formData;
-  // console.log(typeof formData.completeDate)
   return (
     <Card>
       <Form className="todo-form"
@@ -76,19 +58,6 @@ function TodoForm(props) {
               onChange={handleChange}
               value={formData.description} />
           </FormGroup>
-          {/* <FormGroup>
-            <Input
-              type='date'
-              name="date"
-              placeholder="pick your due date"
-              onChange={dateChange}
-              value={formData.completeDate} />
-          </FormGroup> */}
-
-          {/* <FormGroup row>
-            <Label for="data" sm={4}>Due date</Label>
-              <DatePicker name='date' selected={formData.completeDate} onChange={dateChange} />
-          </FormGroup> */}
           <Button type="submit">Add</Button>
 
         </CardBody>
@@ -100,7 +69,6 @@ function TodoForm(props) {
 
 const mapStateToProps = state => {
   return {
-
   }
 }
 
