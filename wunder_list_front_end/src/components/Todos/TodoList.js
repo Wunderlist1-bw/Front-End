@@ -20,7 +20,6 @@ const todoList = props => {
         <div className='todo-app'>
             <div className='action-bar'>
                 <Button onClick={getTodos}>Fetch my todos</Button>
-                {/* <SearchBar /> */}
             </div>
 
             <CardColumns>

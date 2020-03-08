@@ -45,7 +45,7 @@ export const addTodo = (formData) => dispatch => {
             dispatch({ type: ADD_ERROR, payload: "COULD NOT ADD YOUR TODO ITEM" })
         })
 }
-//need to pass in correct data, might want to edit elsewhere, then pass in editData instead of todoID
+
 export const editTodo = (editData) => dispatch => {
     dispatch({ type: EDIT_TODO });
 
@@ -53,12 +53,9 @@ export const editTodo = (editData) => dispatch => {
         .put(`/api/task/${editData.id}`, editData)
         .then(res => {
             console.log('todo edited?', res.data);
-            // dispatch({ type: TODO_EDITED, payload: res.data })
         })
         .catch(err => {
             console.log('could not edit todo', err);
-            // dispatch({ EDIT_ERROR, payload: "UNABLE TO EDIT YOUR TODO, YOU BETTER GO GET IT DONE" })
-
         })
 }
 

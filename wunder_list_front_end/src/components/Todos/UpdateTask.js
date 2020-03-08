@@ -3,13 +3,9 @@ import axiosWithAuth from '../../utils/axiosWithAuth';
 
 import "react-datepicker/dist/react-datepicker.css";
 
-
-import { connect } from 'react-redux';
-
 import { Card, CardTitle, Form, CardBody, FormGroup, Input, Label, Col, Button } from 'reactstrap';
 
 import DatePicker from 'react-datepicker';
-import { addTodo, getList } from '../../actions';
 
 
 const emptyTask = {
@@ -39,13 +35,6 @@ const UpdateTask = props => {
             .get(`/api/task/${props.match.params.id}`)
             .then(res => setTaskToEdit(res.data))
             .catch(err => console.log(err))
-        // const selectedMovie = props.movies.find(movie => {
-        //     return `${movie.id}` === props.match.params.id;
-        // });
-        // console.log('testing props', this.props);
-        // if (selectedMovie) {
-        //     setMovie(selectedMovie)
-        // }
     }, [props.match.params.id])
 
     console.log('test if task is updated', taskToEdit);

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Register from './Register';
 import { Button, Form, FormGroup, Input, Col, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-// import { Link } from 'react-router-dom';
 import axiosWithAuth from "../../utils/axiosWithAuth";
 
 const Login = props => {
