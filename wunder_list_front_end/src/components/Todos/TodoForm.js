@@ -14,7 +14,7 @@ function TodoForm(props) {
     id: Date.now(),
     title: '',
     description: '',
-    completeDate: '03/05/2020',
+    completeDate: '03/08/2020',
     complete: 1,
     users_id: 2
   }
